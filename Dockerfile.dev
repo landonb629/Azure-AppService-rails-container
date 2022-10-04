@@ -1,0 +1,25 @@
+FROM ruby:3.0.0
+
+ENV RAILS_ENV=development 
+ENV EDITOR=vim
+
+RUN apt-get update && \
+    apt-get install -y vim nodejs npm
+
+RUN npm install --global yarn
+
+RUN mkdir -p /usr/src/app/
+
+WORKDIR /usr/src/app/
+
+COPY ../Gemfile /usr/src/app/Gemfile
+
+COPY ../Gemfile.lock /usr/src/app/Gemfile.lock
+
+RUN gem install nokogiri --platform=ruby
+
+RUN bundle install --path vendor/bundle
+
+COPY . /usr/src/app/
+
+
