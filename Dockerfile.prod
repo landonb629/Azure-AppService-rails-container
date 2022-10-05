@@ -1,2 +1,41 @@
-FROM phusion/passenger-ruby30
+FROM phusion/passenger-ruby31
+
+ARG KEY 
+ENV RAILS_MASTER_KEY=${KEY}
+ENV RAILS_ENV=production 
+
+RUN curl -sl https://deb.nodesource.com/setup_16.x | bash - 
+
+RUN apt-get install -y nodejs && \
+    apt clean && \ 
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN npm install --global yarn 
+
+RUN rm -f /etc/service/nginx/down
+
+RUN rm /etc/nginx/sites-enabled/default
+
+ADD Azureapp.conf /etc/nginx/sites-enabled/Azureapp.conf
+
+RUN mkdir /home/app/Azureapp/
+
+WORKDIR /home/app/Azureapp/
+
+RUN bash -lc 'rvm --default use ruby-3.1.2'
+
+COPY --chown=app:app Gemfile /home/app/Azureapp/
+
+COPY --chown=app:app Gemfile.lock /home/app/Azureapp/
+
+RUN bundle install
+
+COPY --chown=app:app . /home/app/Azureapp/
+
+RUN mkdir -p /etc/my_init.d/ 
+
+EXPOSE 80 443
+
+ADD prod-script.sh /etc/my_init.d/prod-script.sh
+
 

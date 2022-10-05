@@ -1,4 +1,4 @@
-FROM ruby:3.0.0
+FROM ruby:3.1.2
 
 ENV RAILS_ENV=development 
 ENV EDITOR=vim
@@ -15,8 +15,6 @@ WORKDIR /usr/src/app/
 COPY ../Gemfile /usr/src/app/Gemfile
 
 COPY ../Gemfile.lock /usr/src/app/Gemfile.lock
-
-RUN gem install nokogiri --platform=ruby
 
 RUN bundle install --path vendor/bundle
 
