@@ -97,6 +97,42 @@ resource "azurerm_service_plan" "serviceplan" {
 
 resource "azurerm_linux_web_app" "webapp" {
   name = "${var.deployment_name}-linuxwebapp"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = var.location
+  service_plan_id = azurerm_service_plan.serviceplan.id
+  virtual_network_subnet_id = azurerm_subnet.app-subnet.id
+  
+  identity {
+    type = "SystemAssigned"
+  }
+
+  site_config {
+    always_on = true 
+    ftps_state = "Disabled"
+    vnet_route_all_enabled = true 
+    default_documents = []
+
+    application_stack { 
+    docker_image = var.docker_image
+    docker_image_tag = var.docker_image_tag
+  }
+  }
+
+  logs {
+    application_logs { 
+      file_system_level = "Information"
+    }
+  }
+  depends_on = [
+    azurerm_container_registry.registry
+  ]
+}
+
+resource "azurerm_role_assignment" "pull" {
+  principal_id = azurerm_linux_web_app.webapp.identity[0].principal_id
+  role_definition_name = "AcrPull"
+  scope = azurerm_container_registry.registry.id
+  skip_service_principal_aad_check = true
 }
 
 

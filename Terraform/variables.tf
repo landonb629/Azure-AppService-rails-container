@@ -1,7 +1,7 @@
 variable "deployment_name" {
   description = "name of application deployment"
   type = string 
-  default = "demo-rails-azure"
+  default = "demorailsazure"
 }
 
 variable "location" {
@@ -19,11 +19,23 @@ variable "pg_version" {
 variable "database_username" {
   description = "database username"
   type = string 
-  default = ""
+  default = "rails"
 }
 
 variable "database_password" {
   description = "database password"
   type = string 
-  default = ""
+  default = ":EIWPVIEUPuboghieoinlkj"
+}
+
+variable "docker_image" {
+  description = "docker image name"
+  type = string 
+  default = "railsdemo"
+}
+
+variable "docker_image_tag" {
+  description = "docker image tag"
+  type = string 
+  default = "v1.0"
 }
