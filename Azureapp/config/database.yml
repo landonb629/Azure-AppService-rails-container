@@ -72,5 +72,6 @@ test:
 production:
   <<: *default
   database: Azureapp_production
+  host: 
   username: Azureapp
-  password: <%= ENV["AZUREAPP_DATABASE_PASSWORD"] %>
+  password: AzureAppPasswordSuperSecret

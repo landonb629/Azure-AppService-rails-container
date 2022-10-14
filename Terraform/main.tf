@@ -17,7 +17,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "app-subnet" {
-  name = "${var.deployment_name}-app"
+  name = "app"
   address_prefixes = ["10.100.1.0/24"]
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name = azurerm_resource_group.rg.name
@@ -33,7 +33,7 @@ resource "azurerm_subnet" "app-subnet" {
 }
 
 resource "azurerm_subnet" "db-subnet" {
-  name = "${var.deployment_name}-app"
+  name = "db"
   address_prefixes = ["10.100.100.0/24"]
   virtual_network_name = azurerm_virtual_network.vnet.name
   resource_group_name = azurerm_resource_group.rg.name
@@ -67,7 +67,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dnslink" {
 ## Azure Database Configuration ##
 ##################################
 resource "azurerm_postgresql_flexible_server" "db" { 
-  name = "${var.deployment_name}-database"
+  name = "${var.deployment_name}-server"
   resource_group_name = azurerm_resource_group.rg.name
   location = var.location
   version = var.pg_version
@@ -83,58 +83,13 @@ resource "azurerm_postgresql_flexible_server" "db" {
   ]
 }
 
-
-######################################
-## Azure App services Configuration ## 
-######################################
-resource "azurerm_service_plan" "serviceplan" {
-  name = "${var.deployment_name}-ASP"
+resource "azurerm_postgresql_flexible_server_database" "rails-db" {
+  name = "Azureapp_production"
   resource_group_name = azurerm_resource_group.rg.name
-  location = var.location
-  os_type = "Linux"
-  sku_name = "S1"
+  server_id = azurerm_postgresql_flexible_server.db.id
+  collation = "en_US.utf8"
+
 }
-
-resource "azurerm_linux_web_app" "webapp" {
-  name = "${var.deployment_name}-linuxwebapp"
-  resource_group_name = azurerm_resource_group.rg.name
-  location = var.location
-  service_plan_id = azurerm_service_plan.serviceplan.id
-  virtual_network_subnet_id = azurerm_subnet.app-subnet.id
-  
-  identity {
-    type = "SystemAssigned"
-  }
-
-  site_config {
-    always_on = true 
-    ftps_state = "Disabled"
-    vnet_route_all_enabled = true 
-    default_documents = []
-
-    application_stack { 
-    docker_image = var.docker_image
-    docker_image_tag = var.docker_image_tag
-  }
-  }
-
-  logs {
-    application_logs { 
-      file_system_level = "Information"
-    }
-  }
-  depends_on = [
-    azurerm_container_registry.registry
-  ]
-}
-
-resource "azurerm_role_assignment" "pull" {
-  principal_id = azurerm_linux_web_app.webapp.identity[0].principal_id
-  role_definition_name = "AcrPull"
-  scope = azurerm_container_registry.registry.id
-  skip_service_principal_aad_check = true
-}
-
 
 ##############################
 ## Azure Container Registry ##

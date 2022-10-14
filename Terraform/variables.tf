@@ -19,23 +19,12 @@ variable "pg_version" {
 variable "database_username" {
   description = "database username"
   type = string 
-  default = "rails"
+  default = "Azureapp"
 }
 
 variable "database_password" {
   description = "database password"
   type = string 
-  default = ":EIWPVIEUPuboghieoinlkj"
+  default = "AzureAppPasswordSuperSecret"
 }
 
-variable "docker_image" {
-  description = "docker image name"
-  type = string 
-  default = "railsdemo"
-}
-
-variable "docker_image_tag" {
-  description = "docker image tag"
-  type = string 
-  default = "v1.0"
-}

@@ -24,9 +24,9 @@ WORKDIR /home/app/Azureapp/
 
 RUN bash -lc 'rvm --default use ruby-3.1.2'
 
-COPY --chown=app:app Gemfile /home/app/Azureapp/
+COPY --chown=app:app Gemfile /home/app/Azureapp/Gemfile
 
-COPY --chown=app:app Gemfile.lock /home/app/Azureapp/
+COPY --chown=app:app Gemfile.lock /home/app/Azureapp/Gemfile.lock
 
 RUN bundle install
 
@@ -36,6 +36,6 @@ RUN mkdir -p /etc/my_init.d/
 
 EXPOSE 80 443
 
-ADD prod-script.sh /etc/my_init.d/prod-script.sh
+ADD script.sh /etc/my_init.d/script.sh
 
 
