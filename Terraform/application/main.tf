@@ -46,6 +46,36 @@ resource "azurerm_role_assignment" "pull" {
   skip_service_principal_aad_check = true
 }
 
+resource "azurerm_linux_web_app_slot" "staging" {
+  name = "${var.deployment_name}-staging"
+  app_service_id = azurerm_service_plan.serviceplan.id
+  virtual_network_subnet_id = data.azurerm_subnet.app_subnet.id
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  site_config {
+    always_on = true 
+    ftps_state = "Disabled"
+    vnet_route_all_enabled = true 
+    default_documents = []
+
+    application_stack { 
+    docker_image = var.docker_image
+    docker_image_tag = var.docker_image_tag
+  }
+  }
+
+  logs {
+    application_logs { 
+      file_system_level = "Information"
+    }
+  }
+
+}
+
+
 
 ##################
 ## data sources ##

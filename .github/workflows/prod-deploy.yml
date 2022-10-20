@@ -1,0 +1,21 @@
+name: deploying application to production
+on:
+  pull_request:
+    branches:
+      - "main"
+    types:
+      - "closed"
+
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: login to azure 
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_SP_CREDENTIALS}}
+      
+      - name: swap staging slot with production
+        run: | 
+          az webapp deployment slot swap -g demorailsazure -n demorailsazure-linuxwebapp --slot stage --target-slot production

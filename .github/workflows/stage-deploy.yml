@@ -1,0 +1,32 @@
+name: deploy image to staging 
+on:
+  pull_request:
+    branches:
+      - stage
+    types:
+      - "closed"
+
+jobs:
+  deploy-to-stage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: building docker container 
+      run: | 
+        cd Azureapp
+        docker build --name demorailsazure/rails-app:${{github.sha}}-stage
+    
+    - name: login to azure 
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_SP_CREDENTIALS}}
+    
+    - name: deploying to azure app service staging slot
+      id: deploy-to-staging
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: 'demorails'
+        slot-name: 'staging'
+        images: demorailsazure/rails-app:${{github-sha}}-stage
+
+        

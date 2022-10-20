@@ -1,0 +1,31 @@
+name: CI/CD pipeline 
+on:
+  push:
+    branches:
+      - "**"
+      - "!main"
+  pull_request:
+    branches:
+      - main
+      - stage
+    types:
+      - "closed"
+
+
+jobs:
+  docker-build:
+    if: (!(github.event.action == 'closed' && github.event.pull_request.merged != true))
+    runs-on: ubuntu-latest
+    
+    
+    steps:
+    - name: building docker image
+      run: | 
+        cd Azureapp
+        docker build --name demorailsazure/rails-app:${{github-.sha}}-production
+  
+  
+
+    
+
+    
