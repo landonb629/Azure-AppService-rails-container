@@ -13,11 +13,11 @@ jobs:
     steps:
     - name: checkout the repository
       uses: actions/checkout@v3
-      
+
     - name: building docker container 
       run: | 
         cd Azureapp
-        docker build --name demorailsazure/rails-app:${{github.sha}}-stage
+        docker build -t demorailsazure/rails-app:${{github.sha}}-stage .
     
     - name: login to azure 
       uses: azure/login@v1
