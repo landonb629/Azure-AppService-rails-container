@@ -19,4 +19,4 @@ jobs:
     - name: building docker image
       run: | 
         cd Azureapp
-        docker build -t demorailsazure/rails-app:${{github.sha}} .
+        docker build -t demorailsazure/rails-app:${{github.sha}} -f Dockerfile.prod .
