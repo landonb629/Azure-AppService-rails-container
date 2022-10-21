@@ -85,7 +85,6 @@ resource "azurerm_postgresql_flexible_server" "db" {
 
 resource "azurerm_postgresql_flexible_server_database" "rails-db" {
   name = "Azureapp_production"
-  resource_group_name = azurerm_resource_group.rg.name
   server_id = azurerm_postgresql_flexible_server.db.id
   collation = "en_US.utf8"
 

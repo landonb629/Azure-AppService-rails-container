@@ -1,17 +1,191 @@
-Started GET "/" for 172.23.0.1 at 2022-10-05 02:50:22 +0000
-Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-Started GET "/" for 172.23.0.1 at 2022-10-05 02:50:22 +0000
-Cannot render console from 172.23.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by Rails::WelcomeController#index as HTML
-Processing by Rails::WelcomeController#index as HTML
-  Rendering vendor/bundle/ruby/3.1.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
-  Rendering vendor/bundle/ruby/3.1.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb
-  Rendered vendor/bundle/ruby/3.1.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.4ms | Allocations: 508)
-Completed 200 OK in 137ms (Views: 52.8ms | ActiveRecord: 0.0ms | Allocations: 5575)
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:42:55 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 14.3ms | Allocations: 440)
+  Rendered layout layouts/application.html.erb (Duration: 3546.1ms | Allocations: 149295)
+Completed 200 OK in 3611ms (Views: 3580.4ms | ActiveRecord: 0.0ms | Allocations: 152774)
 
 
-  Rendered vendor/bundle/ruby/3.1.0/gems/railties-7.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.7ms | Allocations: 645)
-Completed 200 OK in 128ms (Views: 56.2ms | ActiveRecord: 0.0ms | Allocations: 5899)
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:53:31 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 12.1ms | Allocations: 130)
+  Rendered layout layouts/application.html.erb (Duration: 78.7ms | Allocations: 7387)
+Completed 200 OK in 95ms (Views: 92.4ms | Allocations: 8110)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:53:39 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 5.3ms | Allocations: 125)
+  Rendered layout layouts/application.html.erb (Duration: 42.3ms | Allocations: 7373)
+Completed 200 OK in 50ms (Views: 49.4ms | Allocations: 8093)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:53:40 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 74.0ms | Allocations: 6812)
+Completed 200 OK in 79ms (Views: 77.3ms | Allocations: 7089)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:53:41 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 39.8ms | Allocations: 6793)
+Completed 200 OK in 45ms (Views: 43.4ms | Allocations: 7047)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:56:34 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 5.6ms | Allocations: 133)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | Allocations: 7377)
+Completed 200 OK in 65ms (Views: 62.9ms | Allocations: 8073)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:57:48 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 4.7ms | Allocations: 130)
+  Rendered layout layouts/application.html.erb (Duration: 65.6ms | Allocations: 7381)
+Completed 200 OK in 73ms (Views: 72.2ms | Allocations: 8095)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 00:57:49 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 6789)
+Completed 200 OK in 45ms (Views: 43.8ms | Allocations: 7064)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:18:32 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 9.0ms | Allocations: 131)
+  Rendered layout layouts/application.html.erb (Duration: 94.6ms | Allocations: 7376)
+Completed 200 OK in 128ms (Views: 117.2ms | Allocations: 8073)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:19:34 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 4.9ms | Allocations: 136)
+  Rendered layout layouts/application.html.erb (Duration: 66.7ms | Allocations: 7375)
+Completed 200 OK in 75ms (Views: 72.4ms | Allocations: 8092)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:20:03 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 6.6ms | Allocations: 135)
+  Rendered layout layouts/application.html.erb (Duration: 74.6ms | Allocations: 7395)
+Completed 200 OK in 94ms (Views: 87.8ms | Allocations: 8109)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:20:04 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 67.6ms | Allocations: 6797)
+Completed 200 OK in 73ms (Views: 71.1ms | Allocations: 7070)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:20:24 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 8.1ms | Allocations: 138)
+  Rendered layout layouts/application.html.erb (Duration: 52.4ms | Allocations: 7389)
+Completed 200 OK in 60ms (Views: 58.2ms | Allocations: 8085)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:20:58 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 6.6ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 46.2ms | Allocations: 7377)
+Completed 200 OK in 62ms (Views: 60.0ms | Allocations: 8091)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:25:00 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 6.5ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 88.7ms | Allocations: 7379)
+Completed 200 OK in 108ms (Views: 105.3ms | Allocations: 8093)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:25:08 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 5.6ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 49.5ms | Allocations: 7390)
+Completed 200 OK in 57ms (Views: 55.2ms | Allocations: 8107)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:25:35 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 6.2ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 52.1ms | Allocations: 7391)
+Completed 200 OK in 59ms (Views: 57.3ms | Allocations: 8105)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:25:55 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 5.1ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 46.0ms | Allocations: 7390)
+Completed 200 OK in 52ms (Views: 50.8ms | Allocations: 8105)
+
+
+Started GET "/" for 192.168.32.1 at 2022-10-21 02:27:05 +0000
+Cannot render console from 192.168.32.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by IndexController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering index/home.html.erb within layouts/application
+  Rendered index/home.html.erb within layouts/application (Duration: 6.5ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 73.1ms | Allocations: 7367)
+Completed 200 OK in 91ms (Views: 88.5ms | Allocations: 8081)
 
 
