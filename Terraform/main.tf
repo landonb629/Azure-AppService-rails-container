@@ -62,7 +62,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "dnslink" {
     azurerm_private_dns_zone.dnszone
   ]
 }
-
+/*
 ##################################
 ## Azure Database Configuration ##
 ##################################
@@ -88,6 +88,35 @@ resource "azurerm_postgresql_flexible_server_database" "rails-db" {
   server_id = azurerm_postgresql_flexible_server.db.id
   collation = "en_US.utf8"
 
+}
+*/
+##############################
+## azure container instance ## 
+##############################
+
+resource "azurerm_container_group" "db" {
+  name = "Azureapp_production"
+  location = "eastus"
+  resource_group_name = azurerm_resource_group.rg.name
+  ip_address_type = "Private"
+  os_type = "Linux"
+
+  container {
+    name = "postgres-instance"
+    image = "postgres:latest"
+    cpu = "1"
+    memory = "1"
+    environment_variables = {
+      "POSTGRES_DB" = "Azureapp_production",
+      "POSTGRES_USER" = "postgres",
+      "POSTGRES_PASSWORD" = "DemoPassword123!"
+    }
+
+    ports { 
+      port = 5432
+      protocol = "TCP"
+    }
+  }
 }
 
 ##############################

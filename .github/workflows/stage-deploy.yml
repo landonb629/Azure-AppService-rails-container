@@ -18,6 +18,7 @@ jobs:
       run: | 
         cd Azureapp
         docker build -t demorailsazure/rails-app:${{github.sha}}-stage .
+        docker push demorailsazure/rails-app:${{github.sha}}-stage
     
     - name: login to azure 
       uses: azure/login@v1
