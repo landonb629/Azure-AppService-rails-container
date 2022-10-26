@@ -53,6 +53,6 @@ test:
 production:
   <<: *default
   database: Azureapp_production
-  host: 
-  username: Azureapp
-  password: AzureAppPasswordSuperSecret
+  host: 10.100.100.4
+  username: postgres  
+  password: DemoPassword123!

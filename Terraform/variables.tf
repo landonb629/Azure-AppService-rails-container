@@ -28,3 +28,8 @@ variable "database_password" {
   default = "AzureAppPasswordSuperSecret"
 }
 
+variable "is_Container_Instance" {
+  description = "set to true if you would like to deploy a container instance instead of postgresql flexible server"
+  type = bool
+  default = true  
+}
