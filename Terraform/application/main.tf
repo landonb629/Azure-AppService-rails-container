@@ -3,7 +3,7 @@
 ######################################
 resource "azurerm_service_plan" "serviceplan" {
   name = "${var.deployment_name}-ASP"
-  resource_group_name = var.resource_group_name
+  resource_group_name = var.deployment_name
   location = var.location
   os_type = "Linux"
   sku_name = "S1"
@@ -11,7 +11,7 @@ resource "azurerm_service_plan" "serviceplan" {
 
 resource "azurerm_linux_web_app" "webapp" {
   name = "${var.deployment_name}-linuxwebapp"
-  resource_group_name = var.resource_group_name
+  resource_group_name = var.deployment_name
   location = var.location
   service_plan_id = azurerm_service_plan.serviceplan.id
   virtual_network_subnet_id = data.azurerm_subnet.app_subnet.id
@@ -52,11 +52,12 @@ resource "azurerm_role_assignment" "pull" {
 ##################
 
 data "azurerm_subnet" "app_subnet" {
-  subnet_name = "app"
-  resource_group_name = var.resource_group_name
+  name = "app"
+  virtual_network_name = "${var.deployment_name}"
+  resource_group_name = var.deployment_name
 }
 
 data "azurerm_container_registry" "registry" {
   name = "${var.deployment_name}"
-  resource_group_name = var.resource_group_name
+  resource_group_name = var.deployment_name
 }

@@ -33,3 +33,21 @@ To deploy the code
 
 ``` terraform apply -auto-approve ```
 
+
+
+# Steps to deploy 
+1. clone the repository 
+
+2. cd to the Terraform directory 
+    ``` terraform init ```
+    ``` terraform apply -auto-approve ```
+    wait for the infrastructure to deploy 
+
+3. cd back to the root of the repository and build and push the initial application container 
+   ``` docker build -t demorailsazure.azurecr.io/railsapp:v1.0 -f Dockerfile.prod ```
+   ``` az acr login --name demorailsazure ``` 
+   ``` docker push demorailsazure.azurecr.io/railsapp:v1.0 ```
+   
+4. cd to the Terraform/application directory
+   ``` terraform init ```
+   ``` terraform apply -auto-approve ```
