@@ -16,6 +16,20 @@ jobs:
         with:
           creds: ${{secrets.AZURE_SP_CREDENTIALS}}
       
-      - name: swap staging slot with production
+      - name: building docker container 
         run: | 
-          az webapp deployment slot swap -g demorailsazure -n demorailsazure-linuxwebapp --slot stage --target-slot production
+          cd Azureapp
+          docker build -t demorailsazure/rails-app:${{github.sha}} .
+          docker push demorailsazure/rails-app:${{github.sha}}
+      
+      - name: deploying to azure app service staging slot
+        id: deploy-to-staging
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: 'demorailsazure-linuxwebapp'
+          slot-name: 'demorailsazure-linuxwebapp'
+          images: demorailsazure/rails-app:${{github-sha}}
+      
+     # - name: swap staging slot with production
+     #   run: | 
+        #  az webapp deployment slot swap -g demorailsazure -n demorailsazure-linuxwebapp --slot stage --target-slot production
