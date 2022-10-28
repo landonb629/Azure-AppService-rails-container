@@ -1,31 +1,41 @@
-variable "resource_group_name" {
-  description = "name of the resource group in main.tf"
+variable "docker_image" {
+  default = "demorailsazure.azurecr.io/railsapp"
+}
+variable "docker_image_tag" {
+  default = "v1.0"
+}
+variable "deployment_name" {
+  description = "name of application deployment"
   type = string 
-  default = ""
+  default = "demorailsazure"
 }
 
 variable "location" {
-  description = "location from main.tf"
+  description = "location for resources"
   type = string 
   default = "eastus"
 }
 
-variable "deployment_name" {
-  description = "name of the deployment from main.tf"
+variable "pg_version" {
+  description = "version of postgres"
   type = string 
-  default = ""
+  default = "14"
 }
 
-variable "docker_image" {
-  description = "docker image name"
+variable "database_username" {
+  description = "database username"
   type = string 
-  default = "railsdemo"
+  default = "Azureapp"
 }
 
-variable "docker_image_tag" {
-  description = "docker image tag"
+variable "database_password" {
+  description = "database password"
   type = string 
-  default = "v1.0"
+  default = "AzureAppPasswordSuperSecret"
 }
 
-
+variable "is_Container_Instance" {
+  description = "set to true if you would like to deploy a container instance instead of postgresql flexible server"
+  type = bool
+  default = true  
+}

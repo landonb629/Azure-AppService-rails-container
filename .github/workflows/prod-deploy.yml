@@ -1,0 +1,35 @@
+name: deploying application to production
+on:
+  pull_request:
+    branches:
+      - "main"
+    types:
+      - "closed"
+
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: login to azure 
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_SP_CREDENTIALS}}
+      
+      - name: building docker container 
+        run: | 
+          cd Azureapp
+          docker build -t demorailsazure/rails-app:${{github.sha}} .
+          docker push demorailsazure/rails-app:${{github.sha}}
+      
+      - name: deploying to azure app service staging slot
+        id: deploy-to-staging
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: 'demorailsazure-linuxwebapp'
+          slot-name: 'demorailsazure-linuxwebapp'
+          images: demorailsazure/rails-app:${{github-sha}}
+      
+     # - name: swap staging slot with production
+     #   run: | 
+        #  az webapp deployment slot swap -g demorailsazure -n demorailsazure-linuxwebapp --slot stage --target-slot production

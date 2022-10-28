@@ -1,0 +1,35 @@
+name: terraform apply
+on:
+  workflow_dispatch:
+
+
+env:
+  ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+  ARM_CLIENT_ID: ${{secrets.SP_CLIENT_ID}}
+  ARM_CLIENT_SECRET: ${{secrets.SP_PASSWORD}}
+  ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}    
+
+jobs:
+  deploy-infrastructure:
+    runs-on: ubuntu-latest
+    
+    
+
+    steps:
+      - name: download azcli 
+        run: |  
+         sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+         export ARM_CLIENT_ID="${{ env.ARM_CLIENT_ID }}"
+         export ARM_CLIENT_SECRET="${{ env.ARM_CLIENT_SECRET}}"
+         export ARM_SUBSCRIPTION_ID="${{ env.ARM_SUBSCRIPTION_ID }}"
+         export ARM_TENANT_ID="${{ env.ARM_TENANT_ID }}"
+      
+      - name: deploying terraform underlying infrastructure
+        run: | 
+          cd Terraform
+          terraform apply -auto-approve 
+      
+      
+      
+        
+  
