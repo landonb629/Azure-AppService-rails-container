@@ -175,3 +175,5 @@ resource "azurerm_container_registry" "registry" {
   sku = "Basic"
   admin_enabled = true
 }
+
+

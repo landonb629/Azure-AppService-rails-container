@@ -15,9 +15,13 @@ resource "azurerm_linux_web_app" "webapp" {
   location = var.location
   service_plan_id = azurerm_service_plan.serviceplan.id
   virtual_network_subnet_id = data.azurerm_subnet.app_subnet.id
-  
-  identity {
-    type = "SystemAssigned"
+
+  app_settings = {  
+    "DOCKER_REGISTRY_SERVER_PASSWORD" = "NR8hVtF2Yc+dBOTHSFvm1uayNjC5aD8P"
+    "DOCKER_REGISTRY_SERVER_URL" = "demorailsazure.azurecr.io"
+    "DOCKER_REGISTRY_SERVER_USERNAME" = "demorailsazure"
+    "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
+
   }
 
   site_config {
@@ -37,13 +41,6 @@ resource "azurerm_linux_web_app" "webapp" {
       file_system_level = "Information"
     }
   }
-}
-
-resource "azurerm_role_assignment" "pull" {
-  principal_id = azurerm_linux_web_app.webapp.identity[0].principal_id
-  role_definition_name = "AcrPull"
-  scope = data.azurerm_container_registry.registry.id
-  skip_service_principal_aad_check = true
 }
 
 

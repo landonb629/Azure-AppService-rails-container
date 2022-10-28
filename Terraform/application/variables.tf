@@ -1,5 +1,5 @@
 variable "docker_image" {
-  default = "demorailsazure/railsapp"
+  default = "demorailsazure.azurecr.io/railsapp"
 }
 variable "docker_image_tag" {
   default = "v1.0"
