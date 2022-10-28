@@ -14,10 +14,16 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v3
 
-      - name: login to azure 
-        uses: azure/login@v1
+      - name: azure registry login
+        uses: azure/docker-login@v1
         with:
-          creds: ${{secrets.AZURE_SP_CREDENTIALS}}
+          login-server: demorailsazure.azurecr.io
+          username: demorailsazure
+          password: ${{secrets.ACR_PASSWORD}}
+     # - name: login to azure 
+      #  uses: azure/login@v1
+       # with:
+        #  creds: ${{secrets.AZURE_SP_CREDENTIALS}}
       
       - name: building docker container 
         run: | 
