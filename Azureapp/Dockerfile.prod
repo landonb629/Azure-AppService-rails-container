@@ -6,9 +6,7 @@ ENV RAILS_ENV=production
 
 RUN curl -sl https://deb.nodesource.com/setup_16.x | bash - 
 
-RUN apt-get install -y nodejs && \
-    apt clean && \ 
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get install -y nodejs 
 
 RUN npm install --global yarn 
 
