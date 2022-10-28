@@ -28,7 +28,7 @@ jobs:
         with: 
           app-name: 'demorailsazure-linuxwebapp'
           slot-name: 'demorailsazure-linuxwebapp'
-          images: demorailsazure/rails-app:${{github-sha}}
+          images: demorailsazure/rails-app:${{github.sha}}
       
      # - name: swap staging slot with production
      #   run: | 
