@@ -5,6 +5,7 @@ This repository gives an example of how to deploy a rails docker container to an
     1. Microsoft Azure 
     2. Terraform 
     3. Docker 
+    4. Github Actions
 
 
 # Infrastructure deployment 
@@ -13,8 +14,8 @@ Infrastructure will be deploy via terraform. the infrastructure required to run 
 1. Azure virtual network && Azure subnets 
 2. Azure resource group 
 3. Azure container registry 
-4. Azure postgresql flexible server && database 
-5. Azure app service && App service deployment slot 
+4. Azure container instance (Not recommended to use for production database, take a look at Postgresql flexible server)
+5. Azure app service 
 6. Azure private DNS zone 
 
 
@@ -40,14 +41,37 @@ To deploy the code
 
 2. cd to the Terraform directory 
     ``` terraform init ```
+
     ``` terraform apply -auto-approve ```
     wait for the infrastructure to deploy 
+    login to the azure container registry and copy the server password
+    fill in the DOCKER_REGISTRY_SERVER_PASSWORD
 
 3. cd back to the root of the repository and build and push the initial application container 
    ``` docker build -t demorailsazure.azurecr.io/railsapp:v1.0 -f Dockerfile.prod ```
+
    ``` az acr login --name demorailsazure ``` 
+
    ``` docker push demorailsazure.azurecr.io/railsapp:v1.0 ```
-   
+
 4. cd to the Terraform/application directory
+
    ``` terraform init ```
+
    ``` terraform apply -auto-approve ```
+
+Give the application about 5-10 minutes to boot up and pull the container.
+
+This will have deployed the rails application to azure app service, which connects to an azure container instance for postgresql database backend.
+
+## How to check your container logs 
+1. login to azure console and go to app services
+2. click on your application, on the left hand side go down to "Log stream"
+3. this is the log output from your application, if there are errors, they will show here
+
+
+
+## How to deploy code changes?
+1. create a new branch off of main
+2. make your code change, commit the code and wait for rspec to run against your code
+3. merge your code back into the main branch and that will deploy the updated code to the app service
