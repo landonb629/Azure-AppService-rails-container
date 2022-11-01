@@ -20,10 +20,11 @@ jobs:
           login-server: demorailsazure.azurecr.io
           username: demorailsazure
           password: ${{secrets.ACR_PASSWORD}}
-     # - name: login to azure 
-      #  uses: azure/login@v1
-       # with:
-        #  creds: ${{secrets.AZURE_SP_CREDENTIALS}}
+      
+      - name: login to azure 
+        uses: azure/login@v1
+        with:
+         creds: ${{secrets.AZURE_SP_CREDENTIALS}}
       
       - name: building docker container 
         run: | 
