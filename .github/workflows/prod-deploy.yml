@@ -32,8 +32,8 @@ jobs:
           docker build -t demorailsazure.azurecr.io/rails-app:${{github.sha}} -f Dockerfile.prod .
           docker push demorailsazure.azurecr.io/rails-app:${{github.sha}}
       
-      - name: deploying to azure app service staging slot
-        id: deploy-to-staging
+      - name: deploying to azure app service
+        id: deploy-to-prod
         uses: azure/webapps-deploy@v2
         with: 
           app-name: 'demorailsazure-linuxwebapp'

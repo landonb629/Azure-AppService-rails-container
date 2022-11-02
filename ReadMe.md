@@ -26,16 +26,6 @@ There are two different Infrastructure deployments.
     - this deployment code is found in Terraform/main.tf 
 2. After that, we need to deploy the app service, and the app service slot for the staging environment
 
-To deploy the code 
-
-``` cd Terraform ```
-
-``` terraform plan ``` 
-
-``` terraform apply -auto-approve ```
-
-
-
 # Steps to deploy 
 1. clone the repository 
 
@@ -43,11 +33,16 @@ To deploy the code
     ``` terraform init ```
 
     ``` terraform apply -auto-approve ```
-    wait for the infrastructure to deploy 
-    login to the azure container registry and copy the server password
-    fill in the DOCKER_REGISTRY_SERVER_PASSWORD
+
+    - wait for the infrastructure to deploy 
+    - login to the azure container registry and copy the server password
+    - fill in the DOCKER_REGISTRY_SERVER_PASSWORD in Terraform/application/main.tf 
 
 3. cd back to the root of the repository and build and push the initial application container 
+
+   - we have to push the initial docker container to the registry for the initial deployment 
+   - any deployments after this, will be automated by Github Actions 
+
    ``` docker build -t demorailsazure.azurecr.io/railsapp:v1.0 -f Dockerfile.prod ```
 
    ``` az acr login --name demorailsazure ``` 
