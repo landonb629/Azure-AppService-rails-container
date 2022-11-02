@@ -26,16 +26,6 @@ There are two different Infrastructure deployments.
     - this deployment code is found in Terraform/main.tf 
 2. After that, we need to deploy the app service, and the app service slot for the staging environment
 
-To deploy the code 
-
-``` cd Terraform ```
-
-``` terraform plan ``` 
-
-``` terraform apply -auto-approve ```
-
-
-
 # Steps to deploy 
 1. clone the repository 
 
@@ -43,11 +33,16 @@ To deploy the code
     ``` terraform init ```
 
     ``` terraform apply -auto-approve ```
-    wait for the infrastructure to deploy 
-    login to the azure container registry and copy the server password
-    fill in the DOCKER_REGISTRY_SERVER_PASSWORD
+
+    - wait for the infrastructure to deploy 
+    - login to the azure container registry and copy the server password
+    - fill in the DOCKER_REGISTRY_SERVER_PASSWORD in Terraform/application/main.tf 
 
 3. cd back to the root of the repository and build and push the initial application container 
+
+   - we have to push the initial docker container to the registry for the initial deployment 
+   - any deployments after this, will be automated by Github Actions 
+
    ``` docker build -t demorailsazure.azurecr.io/railsapp:v1.0 -f Dockerfile.prod ```
 
    ``` az acr login --name demorailsazure ``` 
@@ -72,6 +67,12 @@ This will have deployed the rails application to azure app service, which connec
 
 
 ## How to deploy code changes?
+- Create an azure service principal and assign it Contributor at the subscription level (this is the simple option, this does not follow principle of least privilege)
+- create two secrets in github, one called ACR_PASSWORD (save the container registry password as the value), and the other is AZURE_SP_CREDENTIALS (save the entire json output that you get as the value)
 1. create a new branch off of main
 2. make your code change, commit the code and wait for rspec to run against your code
 3. merge your code back into the main branch and that will deploy the updated code to the app service
+
+
+## How to create an azure service principal 
+```az  ```
