@@ -129,7 +129,7 @@ resource "azurerm_container_group" "db" {
   resource_group_name = azurerm_resource_group.rg.name
   ip_address_type = "Private"
   os_type = "Linux"
-  network_profile_id = azurerm_network_profile.container_id[count.index].id
+  subnet_ids = [azurerm_subnet.containerInstance-subnet[count.index].id]
 
   container {
     name = "postgres-instance"
@@ -148,7 +148,7 @@ resource "azurerm_container_group" "db" {
     }
   }
 }
-
+/*
 resource "azurerm_network_profile" "container_id" {
   count = var.is_Container_Instance == true ? 1 : 0
   name = "${var.deployment_name}-network-profile-id"
@@ -164,6 +164,7 @@ resource "azurerm_network_profile" "container_id" {
     }
   }
 }
+*/
 
 ##############################
 ## Azure Container Registry ##
