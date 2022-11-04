@@ -39,12 +39,6 @@ There are two different Infrastructure deployments.
 2. run ./initial-deploy.sh (you may have to chmod +x locally) from your terminal and follow the prompts 
 
 
-4. cd to the Terraform/application directory
-
-   ``` terraform init ```
-
-   ``` terraform apply -auto-approve ```
-
 Give the application about 5-10 minutes to boot up and pull the container.
 
 This will have deployed the rails application to azure app service, which connects to an azure container instance for postgresql database backend.
