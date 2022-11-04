@@ -17,7 +17,7 @@ resource "azurerm_linux_web_app" "webapp" {
   virtual_network_subnet_id = data.azurerm_subnet.app_subnet.id
 
   app_settings = {  
-    "DOCKER_REGISTRY_SERVER_PASSWORD" = "TTDacQlqSIYO0c3r3WXa34h1dIyD/WaI"
+    "DOCKER_REGISTRY_SERVER_PASSWORD" = "" #Insert the azure container registry password here
     "DOCKER_REGISTRY_SERVER_URL" = "demorailsazure.azurecr.io"
     "DOCKER_REGISTRY_SERVER_USERNAME" = "demorailsazure"
     "WEBSITES_ENABLE_APP_SERVICE_STORAGE" = "false"
