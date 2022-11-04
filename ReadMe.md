@@ -67,6 +67,17 @@ This will have deployed the rails application to azure app service, which connec
 
 3. merge your code back into the main branch and that will deploy the updated code to the app service
 
+## How to clean up your resources?
+1. at the root of the repository run "./terraform-cleanup.sh"
+
 
 ## How to create an azure service principal 
+What is an azure service principal?
+
 ```az  ```
+
+## How can you utilize deployment slots for faster production deployments?
+- create a staging azure app service slot 
+- change the production deployment file in github actions to run the az cli command that will swap the staging and production container 
+
+This method is faster then doing a deployment to the production app service directly
