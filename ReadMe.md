@@ -58,9 +58,13 @@ This will have deployed the rails application to azure app service, which connec
 
 ## How to deploy code changes?
 - Create an azure service principal and assign it Contributor at the subscription level (this is the simple option, this does not follow principle of least privilege)
+
 - create two secrets in github, one called ACR_PASSWORD (save the container registry password as the value), and the other is AZURE_SP_CREDENTIALS (save the entire json output that you get as the value)
+
 1. create a new branch off of main
+
 2. make your code change, commit the code and wait for rspec to run against your code
+
 3. merge your code back into the main branch and that will deploy the updated code to the app service
 
 

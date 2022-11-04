@@ -37,7 +37,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with: 
           app-name: 'demorailsazure-linuxwebapp'
-          slot-name: 'productionw'
+          slot-name: 'production'
           images: demorailsazure.azurecr.io/rails-app:${{github.sha}}
       
      # - name: swap staging slot with production
